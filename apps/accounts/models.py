@@ -3,7 +3,7 @@ from apps.core.models import BaseModel
 
 class Cliente(BaseModel):
     """Clientes que reciben paquetes"""
-    nombre = models.CharField(max_length=500)
+    nombre = models.CharField(max_length=200)
     email = models.EmailField(blank=True)
     telefono = models.CharField(max_length=15, blank=True)
     direccion = models.TextField(blank=True)

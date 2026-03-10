@@ -7,12 +7,10 @@ class ImportacionExcel(BaseModel):
     archivo = models.FileField(upload_to='importaciones/%Y/%m/')
     usuario = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     
-    # Estadísticas
     total_filas = models.IntegerField(default=0)
     filas_exitosas = models.IntegerField(default=0)
     filas_error = models.IntegerField(default=0)
     
-    # Log de errores
     errores = models.TextField(blank=True)
     
     class Meta:

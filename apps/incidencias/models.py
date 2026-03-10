@@ -10,7 +10,7 @@ class Incidencia(BaseModel):
         related_name='incidencias'
     )
     
-    tipo = models.CharField(max_length=100)  # "Retraso", "Extravío", etc.
+    tipo = models.CharField(max_length=100)
     descripcion = models.TextField()
     
     resuelta = models.BooleanField(default=False)

@@ -19,7 +19,7 @@ class Paqueteria(BaseModel):
 class Estatus(BaseModel):
     """Catálogo de estatus personalizados"""
     nombre = models.CharField(max_length=50, unique=True)
-    color = models.CharField(max_length=7, default='#3B82F6')  # Color hex
+    color = models.CharField(max_length=7, default='#3B82F6')
     orden = models.IntegerField(default=0)
     
     class Meta:
@@ -34,10 +34,8 @@ class Estatus(BaseModel):
 
 class Paquete(BaseModel):
     """Paquete/Envío principal"""
-    # Identificadores
     numero_guia = models.CharField(max_length=100, unique=True, db_index=True)
     
-    # Relaciones
     cliente = models.ForeignKey(
         'accounts.Cliente',
         on_delete=models.PROTECT,
@@ -54,19 +52,15 @@ class Paquete(BaseModel):
         related_name='paquetes'
     )
     
-    # Ubicaciones
     origen = models.CharField(max_length=200)
     destino = models.CharField(max_length=200)
     
-    # Fechas
     fecha_registro = models.DateField()
     fecha_envio = models.DateField(null=True, blank=True)
     fecha_entrega = models.DateField(null=True, blank=True)
     
-    # Información adicional
     observaciones = models.TextField(blank=True)
     
-    # Auditoría
     created_by = models.ForeignKey(
         User,
         on_delete=models.SET_NULL,
