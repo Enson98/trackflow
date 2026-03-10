@@ -1,0 +1,72 @@
+{% extends 'base.html' %} {% block title %}Paquetes - TrackFlow{% endblock %} {%
+block content %}
+<div class="space-y-6">
+  <h1 class="text-3xl font-bold text-gray-800">Listado de Paquetes</h1>
+
+  <div class="bg-white rounded-lg shadow overflow-hidden">
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead class="bg-gray-50">
+        <tr>
+          <th
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
+          >
+            Guía
+          </th>
+          <th
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
+          >
+            Cliente
+          </th>
+          <th
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
+          >
+            Paquetería
+          </th>
+          <th
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
+          >
+            Estado
+          </th>
+          <th
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
+          >
+            Fecha Envío
+          </th>
+        </tr>
+      </thead>
+      <tbody class="bg-white divide-y divide-gray-200">
+        {% for paquete in paquetes %}
+        <tr>
+          <td class="px-6 py-4 whitespace-nowrap font-medium">
+            {{ paquete.numero_guia }}
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap">
+            {{ paquete.cliente.nombre }}
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap">
+            {{ paquete.paqueteria.nombre }}
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap">
+            <span
+              class="px-2 py-1 text-xs rounded"
+              style="background-color: {{ paquete.estatus.color }}20; color: {{ paquete.estatus.color }}"
+            >
+              {{ paquete.estatus.nombre }}
+            </span>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap">
+            {{ paquete.fecha_envio|date:"d/m/Y" }}
+          </td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="5" class="px-6 py-4 text-center text-gray-500">
+            No hay paquetes registrados
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

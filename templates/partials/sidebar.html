@@ -1,0 +1,32 @@
+<aside class="w-64 bg-slate-800 text-white p-6">
+  <div class="mb-8">
+    <h1 class="text-2xl font-bold">TrackFlow</h1>
+  </div>
+
+  <nav class="space-y-2">
+    <a
+      href="{% url 'dashboard:index' %}"
+      class="block px-4 py-2 rounded hover:bg-slate-700"
+    >
+      📊 Dashboard
+    </a>
+    <a
+      href="{% url 'paquetes:listado' %}"
+      class="block px-4 py-2 rounded hover:bg-slate-700"
+    >
+      📦 Paquetes
+    </a>
+    <a href="#" class="block px-4 py-2 rounded hover:bg-slate-700">
+      🚨 Incidencias
+    </a>
+    <a href="#" class="block px-4 py-2 rounded hover:bg-slate-700">
+      📥 Importar
+    </a>
+    <a
+      href="{% url 'accounts:logout' %}"
+      class="block px-4 py-2 rounded hover:bg-slate-700 mt-8"
+    >
+      🚪 Cerrar Sesión
+    </a>
+  </nav>
+</aside>

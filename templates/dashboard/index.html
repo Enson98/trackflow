@@ -1,0 +1,43 @@
+{% extends 'base.html' %} {% block title %}Dashboard - TrackFlow{% endblock %}
+{% block content %}
+<div class="space-y-6">
+  <h1 class="text-3xl font-bold text-gray-800">Dashboard</h1>
+
+  <!-- KPI Cards -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="bg-white p-6 rounded-lg shadow">
+      <h3 class="text-gray-500 text-sm font-medium">Total Paquetes</h3>
+      <p class="text-4xl font-bold text-gray-800 mt-2">{{ total_paquetes }}</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow">
+      <h3 class="text-gray-500 text-sm font-medium">Con Incidencias</h3>
+      <p class="text-4xl font-bold text-red-600 mt-2">{{ con_incidencias }}</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow">
+      <h3 class="text-gray-500 text-sm font-medium">En Tránsito</h3>
+      <p class="text-4xl font-bold text-blue-600 mt-2">--</p>
+    </div>
+  </div>
+
+  <!-- Estado de paquetes -->
+  <div class="bg-white p-6 rounded-lg shadow">
+    <h2 class="text-xl font-bold mb-4">Paquetes por Estado</h2>
+    <div class="space-y-2">
+      {% for estatus in paquetes_por_estatus %}
+      <div class="flex items-center justify-between">
+        <span class="flex items-center">
+          <span
+            class="w-3 h-3 rounded-full mr-2"
+            style="background-color: {{ estatus.estatus__color }}"
+          ></span>
+          {{ estatus.estatus__nombre }}
+        </span>
+        <span class="font-bold">{{ estatus.total }}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

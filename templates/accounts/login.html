@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - TrackFlow</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-md w-96">
+      <h2 class="text-2xl font-bold mb-6 text-center">TrackFlow</h2>
+
+      <form method="post">
+        {% csrf_token %}
+
+        <div class="mb-4">
+          <label class="block text-gray-700 mb-2">Usuario</label>
+          <input
+            type="text"
+            name="username"
+            class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
+          />
+        </div>
+
+        <div class="mb-6">
+          <label class="block text-gray-700 mb-2">Contraseña</label>
+          <input
+            type="password"
+            name="password"
+            class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
+          />
+        </div>
+
+        {% if form.errors %}
+        <div class="mb-4 p-3 bg-red-100 text-red-700 rounded">
+          Usuario o contraseña incorrectos
+        </div>
+        {% endif %}
+
+        <button
+          type="submit"
+          class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+        >
+          Iniciar Sesión
+        </button>
+      </form>
+    </div>
+  </body>
+</html>
